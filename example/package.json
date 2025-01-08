@@ -3,10 +3,10 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "LIBSQL_DATABASE_URL=http://localhost:8080 LIBSQL_AUTH_TOKEN=dGVzdDoxMjM0NTY= astro dev",
+    "build": "LIBSQL_DATABASE_URL=http://localhost:8080 LIBSQL_AUTH_TOKEN=dGVzdDoxMjM0NTY= astro build",
+    "preview": "LIBSQL_DATABASE_URL=http://localhost:8080 LIBSQL_AUTH_TOKEN=dGVzdDoxMjM0NTY= astro preview",
+    "astro": "LIBSQL_DATABASE_URL=http://localhost:8080 LIBSQL_AUTH_TOKEN=dGVzdDoxMjM0NTY= astro"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.3",
