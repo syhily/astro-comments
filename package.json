@@ -1,8 +1,10 @@
 {
-  "name": "astro-comments",
+  "name": "astro-headless-comments",
   "version": "1.0.0",
   "description": "A headless comments solution for Astro by using LibSQL",
   "keywords": [
+    "headless",
+    "astro-adapter",
     "astro-component",
     "withastro",
     "media"
@@ -21,6 +23,9 @@
   "scripts": {
     "lint": "biome check --write . && prettier . --write"
   },
+  "dependencies": {
+    "@astrojs/db": "^0.14.5"
+  },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@types/node": "^22.10.5",
@@ -32,8 +37,5 @@
   },
   "peerDependencies": {
     "astro": "^5.0.0"
-  },
-  "dependencies": {
-    "@astrojs/db": "^0.14.5"
   }
 }
