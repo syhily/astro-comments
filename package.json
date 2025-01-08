@@ -1,22 +1,36 @@
 {
   "name": "astro-comments",
-  "version": "0.0.1",
-  "type": "module",
-  "exports": {
-    ".": "./index.ts"
-  },
-  "files": [
-    "src",
-    "index.ts"
-  ],
+  "version": "1.0.0",
+  "description": "A plugin for adding the comments to Astro by using LibSQL",
   "keywords": [
-    "astro-component"
+    "astro-component",
+    "withastro",
+    "media"
   ],
-  "scripts": {},
+  "bugs": {
+    "url": "https://github.com/syhily/astro-comments/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/syhily/astor-comments"
+  },
+  "license": "MIT",
+  "author": "Yufan Sheng <syhily@gmail.com>",
+  "sideEffects": false,
+  "type": "module",
+  "scripts": {
+    "lint": "biome check --write . && prettier . --write"
+  },
   "devDependencies": {
-    "astro": "^5.1.3"
+    "@biomejs/biome": "^1.9.4",
+    "@types/node": "^22.10.5",
+    "astro": "^5.1.3",
+    "prettier": "^3.4.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-astro-organize-imports": "^0.4.11",
+    "prettier-plugin-organize-imports": "^4.1.0"
   },
   "peerDependencies": {
-    "astro": "^4.0.0 || ^5.0.0"
+    "astro": "^5.0.0"
   }
 }
