@@ -1,6 +1,7 @@
 import { defineDbIntegration } from '@astrojs/db/utils';
+import type { Options } from './options';
 
-export default function Comments() {
+export default function Comments({ prefix }: Options) {
   return defineDbIntegration({
     name: 'astro-headless-comments',
     hooks: {
