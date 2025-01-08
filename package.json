@@ -1,7 +1,7 @@
 {
   "name": "astro-comments",
   "version": "1.0.0",
-  "description": "A plugin for adding the comments to Astro by using LibSQL",
+  "description": "A headless comments solution for Astro by using LibSQL",
   "keywords": [
     "astro-component",
     "withastro",
@@ -32,5 +32,8 @@
   },
   "peerDependencies": {
     "astro": "^5.0.0"
+  },
+  "dependencies": {
+    "@astrojs/db": "^0.14.5"
   }
 }
