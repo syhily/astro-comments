@@ -6,3 +6,6 @@ public/images
 # The MDX files
 *.mdx
 *.md
+
+example/.astro
+example/dist

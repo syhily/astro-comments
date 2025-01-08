@@ -10,11 +10,11 @@
     "media"
   ],
   "bugs": {
-    "url": "https://github.com/syhily/astro-comments/issues"
+    "url": "https://github.com/syhily/astro-headless-comments/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/syhily/astor-comments"
+    "url": "https://github.com/syhily/astor-headless-comments"
   },
   "license": "MIT",
   "author": "Yufan Sheng <syhily@gmail.com>",
@@ -23,8 +23,15 @@
   "scripts": {
     "lint": "biome check --write . && prettier . --write"
   },
+  "lint-staged": {
+    "**/*": [
+      "biome check --no-errors-on-unmatched --files-ignore-unknown=true",
+      "prettier --write --ignore-unknown"
+    ]
+  },
   "dependencies": {
-    "@astrojs/db": "^0.14.5"
+    "@astrojs/db": "^0.14.5",
+    "better-auth": "^1.1.10"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",

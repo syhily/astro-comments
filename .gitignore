@@ -128,3 +128,8 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Example files
+example/dist/
+example/.astro/
+example/node_modules/

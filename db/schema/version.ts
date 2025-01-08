@@ -1,10 +1,11 @@
-import { defineDb, defineTable, column } from 'astro:db';
+import { column, defineDb, defineTable } from 'astro:db';
 
-export const Pets = defineTable({
+export const MigrateVersion = defineTable({
   columns: {
+    version: column.number(),
     name: column.text(),
-    species: column.text(),
+    date: column.date(),
   },
 });
 
-export default defineDb({ tables: { Pets } });
+export default defineDb({ tables: { MigrateVersion } });
