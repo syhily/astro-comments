@@ -4,8 +4,22 @@ import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
 import comments from '../index';
 
-// https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
-  integrations: [mdx(), sitemap(), comments({ prefix: 'comments' })],
+  site: 'http://localhost:4321',
+  server: {
+    port: 4321,
+  },
+  integrations: [
+    mdx(),
+    sitemap(),
+    comments({ prefix: 'comments' }),
+    {
+      name: 'watch-plugin-files',
+      hooks: {
+        'astro:config:setup': ({ addWatchFile }) => {
+          addWatchFile('../');
+        },
+      },
+    },
+  ],
 });
