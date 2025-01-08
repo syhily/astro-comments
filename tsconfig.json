@@ -2,6 +2,7 @@
   "extends": "astro/tsconfigs/strict",
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist"],
+  "esModuleInterop": true,
   "compilerOptions": {
     "jsx": "preserve"
   }
