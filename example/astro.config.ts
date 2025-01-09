@@ -12,12 +12,12 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap(),
-    comments({ prefix: 'comments' }),
+    comments(),
     {
       name: 'watch-plugin-files',
       hooks: {
         'astro:config:setup': ({ addWatchFile }) => {
-          addWatchFile('../');
+          addWatchFile('../**/*');
         },
       },
     },

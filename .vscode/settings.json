@@ -11,5 +11,5 @@
   "[astro]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "cSpell.words": ["astrojs", "libsql", "sqld", "tursodatabase"]
+  "cSpell.words": ["astrojs", "libsql", "sqld", "tursodatabase", "unixepoch"]
 }

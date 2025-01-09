@@ -1,3 +1,10 @@
+---
+import { client } from '../db';
+
+// This is temporary imported for just syncing.
+await client.sync();
+---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,6 +16,5 @@
     <h2>Database Configuration</h2>
     <p>URL: {process.env.LIBSQL_DATABASE_URL}</p>
     <p>Token: {process.env.LIBSQL_AUTH_TOKEN}</p>
-    <h2>Database Versions</h2>
   </body>
 </html>
