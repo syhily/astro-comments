@@ -1,6 +1,7 @@
 import { createClient, type Client } from '@libsql/client';
 import { drizzle } from 'drizzle-orm/libsql';
 import { loadDbConfig } from './config';
+import migrate from './migration';
 import * as schema from './schema';
 
 /**
@@ -13,7 +14,11 @@ const globalForDb = globalThis as unknown as {
 const { url, token } = loadDbConfig();
 
 export const client = globalForDb.client ?? createClient({ url, authToken: token });
+// Skip the client creation next time.
 if (process.env.NODE_ENV !== 'production') {
   globalForDb.client = client;
 }
+// Trigger the database migration.
+migrate(client);
+
 export const db = drizzle(client, { schema });

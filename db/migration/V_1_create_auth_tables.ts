@@ -1,9 +1,9 @@
 import type { DbMigrator } from '../../types';
 
 const migrate: DbMigrator = {
-  migrations: [],
-  version: 0,
-  changelog: [],
+  statements: [],
+  version: 1,
+  changelog: ['Create the auth table for storing the credentials.'],
 };
 
 export default migrate;

@@ -16,10 +16,7 @@ export const posts = createTable(
       .notNull(),
     updatedAt: int('updatedAt', { mode: 'timestamp' }).$onUpdate(() => new Date()),
   },
-  (example) => ({
-    createdByIdIdx: index('created_by_idx').on(example.createdById),
-    nameIndex: index('name_idx').on(example.name),
-  }),
+  (example) => [index('created_by_idx').on(example.createdById), index('name_idx').on(example.name)],
 );
 
 export const users = createTable('user', {
@@ -44,9 +41,7 @@ export const sessions = createTable(
       .references(() => users.id),
     expires: int('expires', { mode: 'timestamp' }).notNull(),
   },
-  (session) => ({
-    userIdIdx: index('session_userId_idx').on(session.userId),
-  }),
+  (session) => [index('session_userId_idx').on(session.userId)],
 );
 
 export const sessionsRelations = relations(sessions, ({ one }) => ({
@@ -60,7 +55,5 @@ export const verificationTokens = createTable(
     token: text('token', { length: 255 }).notNull(),
     expires: int('expires', { mode: 'timestamp' }).notNull(),
   },
-  (vt) => ({
-    compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
-  }),
+  (vt) => [primaryKey({ columns: [vt.identifier, vt.token] })],
 );

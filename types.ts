@@ -1,3 +1,5 @@
+import type { InStatement } from '@libsql/client';
+
 export interface Page {
   // The relative file path start with "./pages"
   file: string;
@@ -15,7 +17,7 @@ export interface DbConfig {
 export interface DbMigrator {
   // The sql sets.
   // Remember that all the tables in our system should start with 'hc_'.
-  migrations: string[];
+  statements: InStatement[];
   // The migrate version for auto increase in the version table.
   version: number;
   // The changes made in this migrator.
