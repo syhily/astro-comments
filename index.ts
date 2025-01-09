@@ -1,8 +1,8 @@
 import type { AstroIntegration } from 'astro';
 import { registerPages } from './pages';
-import type { Options } from './types';
 
-export default function Comments({ prefix }: Options): AstroIntegration {
+// The entrypoint for comments integration.
+export default function Comments(): AstroIntegration {
   return {
     name: 'astro-headless-comments',
     hooks: {
