@@ -2,7 +2,7 @@
 import { client } from '../db';
 
 // This is temporary imported for just syncing.
-await client.sync();
+await client.execute('SELECT 1;');
 ---
 
 <!doctype html>
