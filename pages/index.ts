@@ -1,12 +1,16 @@
 import type { InjectedRoute } from 'astro';
 
-import type { Page } from './types';
+import type { Page } from '../types';
 
 // All the astro files should be defined in the "pages" directory with the pattern.
 const pages: Page[] = [
   {
-    file: './pages/index.astro',
+    file: './comments/index.astro',
     requestPath: '/comments',
+  },
+  {
+    file: './api/auth/[...all].ts',
+    requestPath: '/api/auth/[...all]',
   },
 ];
 
