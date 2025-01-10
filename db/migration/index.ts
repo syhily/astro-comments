@@ -60,7 +60,7 @@ const migrate = async (client: Client) => {
         ...migrator.statements,
         // Ensure the schema version is inserted in a migrate transaction.
         {
-          sql: 'INSERT INTO hc_schema_version (version, description, checksum) VALUE (?, ?, ?)',
+          sql: 'INSERT INTO hc_schema_version (version, description, checksum) VALUES (?, ?, ?)',
           args: [`${migrator.version}`, migrator.changelog.join('\n'), checksum],
         },
       ]);

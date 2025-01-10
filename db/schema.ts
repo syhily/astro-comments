@@ -1,59 +1,71 @@
-import { relations, sql } from 'drizzle-orm';
-import { index, int, primaryKey, sqliteTableCreator, text } from 'drizzle-orm/sqlite-core';
+import { relations } from 'drizzle-orm';
+import { integer, sqliteTableCreator, text } from 'drizzle-orm/sqlite-core';
 
-export const createTable = sqliteTableCreator((name) => `comments_${name}`);
+// Give all the database with a common prefix "hc_"
+export const createTable = sqliteTableCreator((name) => `hc_${name}`);
 
-export const posts = createTable(
-  'post',
-  {
-    id: int('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
-    name: text('name', { length: 256 }),
-    createdById: text('created_by', { length: 255 })
-      .notNull()
-      .references(() => users.id),
-    createdAt: int('created_at', { mode: 'timestamp' })
-      .default(sql`(unixepoch())`)
-      .notNull(),
-    updatedAt: int('updatedAt', { mode: 'timestamp' }).$onUpdate(() => new Date()),
-  },
-  (example) => [index('created_by_idx').on(example.createdById), index('name_idx').on(example.name)],
-);
-
-export const users = createTable('user', {
-  id: text('id', { length: 255 })
-    .notNull()
-    .primaryKey()
-    .$defaultFn(() => crypto.randomUUID()),
-  name: text('name', { length: 255 }),
-  email: text('email', { length: 255 }).notNull(),
-  emailVerified: int('email_verified', {
-    mode: 'timestamp',
-  }).default(sql`(unixepoch())`),
-  image: text('image', { length: 255 }),
+// The tables for storing for authentication.
+export const user = createTable('user', {
+  id: text('id').primaryKey(),
+  name: text('name').notNull(),
+  email: text('email').notNull().unique(),
+  emailVerified: integer('email_verified', { mode: 'boolean' }).notNull(),
+  image: text('image'),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull(),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull(),
 });
 
-export const sessions = createTable(
-  'session',
-  {
-    sessionToken: text('session_token', { length: 255 }).notNull().primaryKey(),
-    userId: text('userId', { length: 255 })
-      .notNull()
-      .references(() => users.id),
-    expires: int('expires', { mode: 'timestamp' }).notNull(),
-  },
-  (session) => [index('session_userId_idx').on(session.userId)],
-);
-
-export const sessionsRelations = relations(sessions, ({ one }) => ({
-  user: one(users, { fields: [sessions.userId], references: [users.id] }),
+export const usersRelations = relations(user, ({ many }) => ({
+  session: many(session),
+  account: many(account),
 }));
 
-export const verificationTokens = createTable(
-  'verification_token',
-  {
-    identifier: text('identifier', { length: 255 }).notNull(),
-    token: text('token', { length: 255 }).notNull(),
-    expires: int('expires', { mode: 'timestamp' }).notNull(),
-  },
-  (vt) => [primaryKey({ columns: [vt.identifier, vt.token] })],
-);
+export const session = createTable('session', {
+  id: text('id').primaryKey(),
+  expiresAt: integer('expires_at', { mode: 'timestamp' }).notNull(),
+  token: text('token').notNull().unique(),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull(),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull(),
+  ipAddress: text('ip_address'),
+  userAgent: text('user_agent'),
+  userId: text('user_id').notNull(),
+});
+
+export const sessionRelations = relations(session, ({ one }) => ({
+  user: one(user, {
+    fields: [session.userId],
+    references: [user.id],
+  }),
+}));
+
+export const account = createTable('account', {
+  id: text('id').primaryKey(),
+  accountId: text('account_id').notNull(),
+  providerId: text('provider_id').notNull(),
+  userId: text('user_id'),
+  accessToken: text('access_token'),
+  refreshToken: text('refresh_token'),
+  idToken: text('id_token'),
+  accessTokenExpiresAt: integer('access_token_expires_at', { mode: 'timestamp' }),
+  refreshTokenExpiresAt: integer('refresh_token_expires_at', { mode: 'timestamp' }),
+  scope: text('scope'),
+  password: text('password'),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull(),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull(),
+});
+
+export const accountRelations = relations(account, ({ one }) => ({
+  user: one(user, {
+    fields: [account.userId],
+    references: [user.id],
+  }),
+}));
+
+export const verification = createTable('verification', {
+  id: text('id').primaryKey(),
+  identifier: text('identifier').notNull(),
+  value: text('value').notNull(),
+  expiresAt: integer('expires_at', { mode: 'timestamp' }).notNull(),
+  createdAt: integer('created_at', { mode: 'timestamp' }),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }),
+});
