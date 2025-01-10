@@ -55,14 +55,15 @@ const migrate = async (client: Client) => {
     const existMigrations = await db.select().from(schemaVersion).where(eq(schemaVersion.version, migrator.version));
     if (existMigrations.length === 0) {
       console.log(`Start the migrator ${migrator.version}`);
-      // Execute the migration
-      await client.migrate(migrator.statements);
-      // Insert the migrate record.
-      await db.insert(schemaVersion).values({
-        version: migrator.version,
-        description: migrator.changelog.join('\n'),
-        checksum: checksum,
-      });
+      // Execute the migration in a batch transaction.
+      await client.migrate([
+        ...migrator.statements,
+        // Ensure the schema version is inserted in a migrate transaction.
+        {
+          sql: 'INSERT INTO hc_schema_version (version, description, checksum) VALUE (?, ?, ?)',
+          args: [`${migrator.version}`, migrator.changelog.join('\n'), checksum],
+        },
+      ]);
       console.log(`Finish the migrator ${migrator.version}`);
     } else {
       const existMigration = existMigrations[0];
