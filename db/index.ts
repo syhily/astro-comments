@@ -1,5 +1,6 @@
-import { createClient, type Client } from '@libsql/client';
+import { type Client, createClient } from '@libsql/client';
 import { drizzle } from 'drizzle-orm/libsql';
+
 import { loadDbConfig } from './config';
 import migrate from './migration';
 import * as schema from './schema';
