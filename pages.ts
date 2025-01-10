@@ -1,4 +1,5 @@
 import type { InjectedRoute } from 'astro';
+
 import type { Page } from './types';
 
 // All the astro files should be defined in the "pages" directory with the pattern.

@@ -1,4 +1,5 @@
 import type { AstroIntegration } from 'astro';
+
 import { registerPages } from './pages';
 
 // The entrypoint for comments integration.

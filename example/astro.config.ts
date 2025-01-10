@@ -2,6 +2,7 @@
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
+
 import comments from '../index';
 
 export default defineConfig({

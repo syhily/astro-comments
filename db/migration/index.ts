@@ -3,6 +3,7 @@ import { eq, sql } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/libsql';
 import { int, sqliteTable, text, uniqueIndex } from 'drizzle-orm/sqlite-core';
 import { createHash } from 'node:crypto';
+
 import type { DbMigrator } from '../../types';
 import v1 from './V_1_create_auth_tables';
 
