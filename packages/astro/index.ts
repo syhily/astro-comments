@@ -7,7 +7,7 @@ export default function Comments(): AstroIntegration {
   return {
     name: 'astro-headless-comments',
     hooks: {
-      'astro:config:setup': ({ injectRoute, addMiddleware }) => {
+      'astro:config:setup': ({ injectRoute, addMiddleware, updateConfig }) => {
         // Inject the comments router for serving all the comments requests.
         registerPages(injectRoute);
         // Inject the auth middleware for having the auth context.

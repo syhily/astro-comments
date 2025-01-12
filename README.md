@@ -7,7 +7,16 @@ Given this plugin is based on the `@astrojs/db` a runnable LibSQL instance is re
 
 ## Install
 
-TODO
+```bash
+# Use npm
+npm install -D astro-headless-comments
+
+# Use pnpm
+pnpm add -D astro-headless-comments
+
+# Use yarn
+yarn add -D astro-headless-comments
+```
 
 ## Usage
 
@@ -20,7 +29,22 @@ LIBSQL_DATABASE_URL=
 LIBSQL_AUTH_TOKEN=
 ```
 
-## Todo List
+## Build & Release
 
-- [ ] Support database migration on astro db.
-- [ ] Support the JWT auth.
+This project is a monorepo based on the pnpm. The changeset is used for managing version and release.
+
+To create changesets, you should type the commands shown below.
+
+```bash
+pnpx changeset
+# commit the changes
+```
+
+To release the changes, you should type the commands shown below.
+
+```bash
+pnpx changeset version
+pnpm install
+pnpm publish -r
+# commit the changes
+```
