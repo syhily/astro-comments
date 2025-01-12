@@ -130,6 +130,10 @@ dist
 .pnp.*
 
 # Example files
-example/dist/
-example/.astro/
-example/node_modules/
+apps/playground/dist/
+apps/playground/.astro/
+apps/playground/node_modules/
+# React Router
+packages/manage/.react-router/
+packages/manage/build/
+

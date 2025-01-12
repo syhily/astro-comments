@@ -1,6 +1,6 @@
-# Astro Starter Kit: Blog
+# Astro Headless Comments: Playground
 
-This is an example project in testing the `astro-headless-comments` plugin.
+This is an demo project in testing the `astro-headless-comments` plugin.
 
 ## Start a local LibSQL
 

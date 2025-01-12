@@ -4,6 +4,7 @@
   "exclude": ["dist"],
   "esModuleInterop": true,
   "compilerOptions": {
-    "jsx": "preserve"
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   }
 }

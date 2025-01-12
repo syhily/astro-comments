@@ -1,9 +1,9 @@
 // @ts-check
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
+import comments from 'astro-headless-comments';
 import { defineConfig } from 'astro/config';
-
-import comments from '../index';
+import 'dotenv/config';
 
 export default defineConfig({
   site: 'http://localhost:4321',

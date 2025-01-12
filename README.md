@@ -7,7 +7,16 @@ Given this plugin is based on the `@astrojs/db` a runnable LibSQL instance is re
 
 ## Install
 
-TODO
+```bash
+# Use npm
+npm install -D astro-headless-comments
+
+# Use pnpm
+pnpm add -D astro-headless-comments
+
+# Use yarn
+yarn add -D astro-headless-comments
+```
 
 ## Usage
 
@@ -19,8 +28,3 @@ LIBSQL_DATABASE_URL=
 # The auth token, it's a base64 encoded $username:$password
 LIBSQL_AUTH_TOKEN=
 ```
-
-## Todo List
-
-- [ ] Support database migration on astro db.
-- [ ] Support the JWT auth.

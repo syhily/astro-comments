@@ -1,0 +1,46 @@
+{
+  "name": "astro-headless-comments",
+  "version": "1.0.0",
+  "description": "A headless comments solution for Astro by using LibSQL",
+  "keywords": [
+    "headless",
+    "astro-adapter",
+    "astro-component",
+    "withastro",
+    "media"
+  ],
+  "bugs": {
+    "url": "https://github.com/syhily/astro-headless-comments/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/syhily/astor-headless-comments"
+  },
+  "license": "MIT",
+  "author": "Yufan Sheng <syhily@gmail.com>",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": "./index.ts",
+    "./types": "./types.ts",
+    "./middleware": "./middleware.ts",
+    "./env.d.ts": "./env.d.ts",
+    "./pages": "./pages/*",
+    "./db": "./db/*",
+    "./auth": "./auth/*"
+  },
+  "dependencies": {
+    "@astro-headless-comments/manage": "workspace:*",
+    "@libsql/client": "^0.14.0",
+    "better-auth": "^1.1.11",
+    "drizzle-orm": "^0.38.3",
+    "nodemailer": "^6.9.16"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "astro": "^5.1.5"
+  },
+  "peerDependencies": {
+    "astro": "^5.0.0"
+  }
+}
