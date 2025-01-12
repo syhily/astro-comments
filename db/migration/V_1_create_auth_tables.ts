@@ -8,6 +8,7 @@ const migrate: DbMigrator = {
   "email" TEXT NOT NULL UNIQUE,
   "email_verified" INTEGER NOT NULL,
   "image" TEXT,
+  "two_factor_enabled" INTEGER,
   "created_at" INTEGER NOT NULL,
   "updated_at" INTEGER NOT NULL
 );`,
@@ -44,9 +45,33 @@ const migrate: DbMigrator = {
   "created_at" INTEGER NOT NULL,
   "updated_at" INTEGER NOT NULL
 );`,
+    `CREATE TABLE "hc_passkey" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "name" TEXT,
+  "public_key" TEXT NOT NULL,
+  "user_id" TEXT NOT NULL,
+  "credential_id" TEXT NOT NULL,
+  "counter" INTEGER NOT NULL,
+  "device_type" TEXT NOT NULL,
+  "backed_up" INTEGER NOT NULL,
+  "transports" TEXT,
+  "created_at" INTEGER NOT NULL
+);`,
+    `CREATE TABLE "hc_two_factor" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "secret" TEXT NOT NULL,
+  "backup_codes" TEXT NOT NULL,
+  "user_id" TEXT NOT NULL
+);`,
+    `CREATE TABLE "hc_rate_limit" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "key" TEXT,
+  "count" INTEGER,
+  "last_request" INTEGER
+);`,
   ],
   version: 1,
-  changelog: ['Create the better auth table for storing the credentials.'],
+  changelog: ['Create the better auth table for storing the credentials.', 'Add passkey and ratelimit for better auth'],
 };
 
 export default migrate;

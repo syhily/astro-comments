@@ -1,5 +1,6 @@
 import { betterAuth } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
+import { twoFactor } from 'better-auth/plugins';
 import { passkey } from 'better-auth/plugins/passkey';
 import type { SocialProviders } from 'better-auth/social-providers';
 
@@ -16,12 +17,19 @@ const loadSocialProviders = (): SocialProviders | undefined => {
   return providers;
 };
 
+// TODO Enable the on demand auth configuration from the database.
+
 export const auth = betterAuth({
+  appName: 'TODO',
   emailAndPassword: {
     enabled: true,
   },
   socialProviders: loadSocialProviders(),
-  plugins: [passkey()],
+  rateLimit: {
+    storage: 'database',
+    modelName: 'rateLimit',
+  },
+  plugins: [passkey(), twoFactor()],
   database: drizzleAdapter(db, {
     provider: 'sqlite',
   }),
