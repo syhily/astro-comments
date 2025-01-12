@@ -32,7 +32,8 @@
   "dependencies": {
     "@libsql/client": "^0.14.0",
     "better-auth": "^1.1.11",
-    "drizzle-orm": "^0.38.3"
+    "drizzle-orm": "^0.38.3",
+    "nodemailer": "^6.9.16"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
