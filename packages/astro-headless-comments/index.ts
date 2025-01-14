@@ -28,6 +28,11 @@ export default function Comments(): AstroIntegration {
         // Add react integration.
         updateConfig({ integrations: [react()] });
       },
+      'astro:config:done': ({ config }) => {
+        if (config.site === undefined) {
+          console.error('Require the "site" to be configured in your astro config file.');
+        }
+      },
     },
   };
 }

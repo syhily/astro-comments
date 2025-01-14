@@ -2,6 +2,7 @@ import { defineMiddleware } from 'astro:middleware';
 
 import { auth } from './index';
 
+// This is a astro middleware for handling the /api/auth endpoints.
 export const onRequest = defineMiddleware(async (context, next) => {
   const isAuthed = await auth.api.getSession({
     headers: context.request.headers,
