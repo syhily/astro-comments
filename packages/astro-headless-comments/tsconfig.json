@@ -1,0 +1,10 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "include": ["**/*", "../../apps/playground/tailwind.config.ts"],
+  "exclude": ["dist"],
+  "esModuleInterop": true,
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  }
+}

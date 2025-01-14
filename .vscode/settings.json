@@ -1,0 +1,27 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "quickfix.biome": "explicit"
+  },
+  "astro.content-intellisense": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "cSpell.words": [
+    "astrojs",
+    "libsql",
+    "popperjs",
+    "sheng",
+    "signup",
+    "sqld",
+    "trivago",
+    "tursodatabase",
+    "unixepoch",
+    "withastro",
+    "yufan"
+  ]
+}
